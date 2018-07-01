@@ -1,0 +1,39 @@
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.eqrs-staging-criteria {
+  border: 1px lightgrey solid;
+  background-color: mintcream;
+  border-radius: 10px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.border-right {
+  border-right: 1px solid lightgrey;
+}
+.text-color-header {
+  color: #0071bc;
+}
+.que-cir-position {
+  top: .6em;
+  left: .2em;
+}
+.icon-size {
+  font-size: 23px;
+  padding-top: 0.05em;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .w-auth-batch {
+    flex: 0 0 33%;
+    max-width: 100%;
+  }
+  .w-label-auth {
+    max-width: 100%;
+  }
+  .m-pri-owner {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {MdExpansionModule, MdSelectModule, MdDialogModule, MdAutocompleteModule, MdInputModule, MdTooltipModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { FacilitySearchComponent } from './facility-search/facility-search.component';
@@ -12,7 +13,13 @@ import { FacilitySearchComponent } from './facility-search/facility-search.compo
     FacilitySearchComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MdExpansionModule,
+    MdSelectModule,
+    MdDialogModule,
+    MdAutocompleteModule,
+    MdInputModule,
+    MdTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

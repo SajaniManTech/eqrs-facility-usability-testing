@@ -1,1 +1,209 @@
-<h1>hello</h1>
+<h1>Hello</h1>
+<div role="main" class="container" style="margin-top: 50px;">
+
+  <div class="row">
+  <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  cursor-pointer d-flex flex-wrap"
+       aria-label="Advanced search panel, when selected with expand / collapse the advanced search panel.">
+    <h4 class="text-color-header"><b>Advanced Search</b></h4>
+    <sup class="que-cir-position">
+      <i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="true" tabindex="0"
+         [md-tooltip]="facilityAdvancedSearchToolTip"></i>
+    </sup>
+    <div class="ml-1 mt-2 text-color-header icon-size">
+      <b><i [ngClass]="(showAdvSearchPanel) ? 'fa fa-angle-right' : 'fa fa-angle-down'"></i></b>
+    </div>
+  </div>
+
+  <form class="col-sm-12" *ngIf="showAdvSearchPanel">
+    <!-- location -->
+    <hr>
+    <div class="row">
+      <div class="col"><b>Location</b></div>
+    </div>
+
+    <hr/>
+
+    <!-- specifics -->
+
+    <div class="mb-3">
+      <div class="row">
+        <div class="col"><b>Specifics</b></div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-sm-3 mt-4">
+          <div><label for="providerUseType">Provider use type</label></div>
+          <div>
+            <select class="eqrs-select" name="providerUseType" id="providerUseType" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor="let providerUseType of providerUseTypes" [value]=providerUseType.description>{{providerUseType.description}}</option>-->
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div><label for="medicareStatus">Medicare status</label></div>
+          <div>
+            <select class="eqrs-select" name="medicareStatus" id="medicareStatus" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor='let medicareStatus of medicareStatuses' [value]="medicareStatus.status">{{medicareStatus.status}}</option>-->
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4 w-auth-batch">
+          <div><label class="col-sm-7 pl-0 w-label-auth" for="authorizedBatchSubOrg">Authorized batch submitting organization </label></div>
+          <div>
+            <select class="eqrs-select" name="authorizedBatchSubOrg" id="authorizedBatchSubOrg" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <option value="DaVita">DaVita</option>
+              <option value="Dialysis Clinic, Inc.">Dialysis Clinic, Inc.</option>
+              <option value="Fresenius Medical Care">Fresenius Medical Care</option>
+              <option value="NRAA">NRAA</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div><label for="typeOfServices">Type of services</label></div>
+          <div>
+            <select class="eqrs-select" name="typeOfServices" id="typeOfServices" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor="let typeOfservice of typeOfServices" [value]=typeOfservice.description>{{typeOfservice.description}}</option>-->
+              <option value="Peritoneal dialysis">Peritoneal dialysis</option>
+              <option value="Hemodialysis">Hemodialysis</option>
+              <option value="Dialyzer reuse">Dialyzer reuse</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div><label for="additionalServices">Additional services</label></div>
+          <div>
+            <select class="eqrs-select" name="additionalServices" id="additionalServices" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor='let additionalService of additionalServices' value="additionalService.status">{{additionalService.status}}</option>-->
+              <option value="Accepts pediatric">Accepts pediatric</option>
+              <option value="Accepts transients">Accepts transients</option>
+              <option value="Shifts start after 5 p.m.">Shifts start after 5 p.m.</option>
+              <option value="Isolation stations">Isolation stations</option>
+              <option value="Patients receiving dialysis within LTC facilities">Patients receiving dialysis within LTC facilities</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div><label for="programType">Program type </label></div>
+          <div>
+            <select class="eqrs-select" name="programType" id="programType" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor='let programType of programTypes' value="programType.orgId">{{programType.orgId}}</option>-->
+              <option value="Dialysis">Dialysis</option>
+              <option value="Transplant">Transplant</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div><label for="managingOrganization">Managing organization</label></div>
+          <div>
+            <select class="eqrs-select" name="managingOrganization" id="managingOrganization" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor="let managingOrganization of managingOrganizations" [value]=managingOrganization.description>{{managingOrganization.description}}</option>-->
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3 m-pri-owner">
+          <div><label for="primaryOwner">Primary owner</label></div>
+          <div>
+            <select class="eqrs-select" name="primaryOwner" id="primaryOwner" (change)="getSelectedSpecificsValue($event.target)">
+              <option value="" selected disabled></option>
+              <!--<option *ngFor='let primaryOwner of primaryOwners' value="primaryOwner.status">{{primaryOwner.status}}</option>-->
+              <option value="DaVita">DaVita</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+
+    <!-- filters -->
+
+    <div class="row">
+      <div class="col-sm-12"><b>Filters</b></div>
+      <div class="col-sm-12 d-flex">
+        <div class="col-sm-1 pr-0 pl-0 mt-1">Show:</div>
+        <div class="col-sm-9 pl-0 d-flex flex-wrap">
+                  <span class="mr-3">
+                    <input id="closed" type="checkbox" name="closed" value="closed">
+                    <label for="closed">Closed</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="opened" type="checkbox" name="opened" value="opened">
+                    <label for="opened">Opened</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="saved" type="checkbox" name="saved" value="saved">
+                    <label for="saved">Saved</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="missing-backup-facility" type="checkbox" name="missing-backup-facility">
+                    <label for="missing-backup-facility">Missing backup facility</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="missing-hours-and-shifts" type="checkbox" name="missing-hours-and-shifts">
+                    <label for="missing-hours-and-shifts">Missing hours and shifts</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="offers-certified-services" type="checkbox" name="offers-certified-services">
+                    <label for="offers-certified-services">Offers certified services</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="missing-additional-services" type="checkbox" name="missing-additional-services">
+                    <label for="missing-additional-services">Missing additional services</label>
+                  </span>
+          <span class="mr-3">
+                    <input id="temporary-closed" type="checkbox" name="temporary-closed">
+                    <label for="temporary-closed">Temporary closed</label>
+                  </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- criteria -->
+
+    <div class="row">
+      <div class="col-sm-11">CRITERIA</div>
+      <div class="col-sm-1 text-right cursor-pointer" (click)="removeAllItems()">Clear all</div>
+    </div>
+    <hr/>
+
+    <div class="row pl-3 d-flex" *ngIf="locationArray.length != 0">
+      <b class="col-sm-12 pl-0">Location</b>
+      <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of locationArray; let i = index;">
+        <div class="p-2 border-right"><span>{{item}}</span></div>
+        <div class="p-2" (click)="locationArray.splice(i,1)"><div class="fa fa-times"></div></div>
+      </div>
+    </div>
+
+    <div class="row pl-3 mt-3 d-flex" *ngIf="specificsArray.length != 0">
+      <b class="col-sm-12 pl-0">Specifics</b>
+      <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of specificsArray; let i = index;">
+        <div class="p-2 border-right"><span>{{item}}</span></div>
+        <div class="p-2" (click)="specificsArray.splice(i,1)"><div class="fa fa-times"></div></div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="specificsArray.length == 0 && locationArray.length == 0">
+      <div class="col">No criteria selected</div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-2">
+        <button class="eqrs-button-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</div>
