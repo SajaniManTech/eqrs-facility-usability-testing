@@ -1,0 +1,18 @@
+{
+  "networks": [
+    "Network 1", "Network 2", "Network 3", "Network 4", "Network 5", "Network 6", "Network 7", "Network 8", "Network 9", "Network 10"
+  ],
+
+  "states": [
+    "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT",
+    "NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN", "TX","UT","VA","VT","WA","WI","WV","WY"
+  ],
+
+  "zipCodes": [
+    21111, 21112, 21113, 21114, 21115, 21116, 21117, 21118, 21119, 21120
+  ],
+
+  "cities": []
+}
+
+

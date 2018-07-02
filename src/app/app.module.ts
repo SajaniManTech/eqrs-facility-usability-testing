@@ -5,6 +5,8 @@ import {MdExpansionModule, MdSelectModule, MdDialogModule, MdAutocompleteModule,
 
 import { AppComponent } from './app.component';
 import { FacilitySearchComponent } from './facility-search/facility-search.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -14,14 +16,17 @@ import { FacilitySearchComponent } from './facility-search/facility-search.compo
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MdExpansionModule,
     MdSelectModule,
     MdDialogModule,
     MdAutocompleteModule,
     MdInputModule,
-    MdTooltipModule
+    MdTooltipModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

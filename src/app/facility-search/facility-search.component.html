@@ -1,5 +1,56 @@
-<h1>Hello</h1>
-<div role="main" class="container" style="margin-top: 50px;">
+<div role="main" class="container mt-5">
+
+  <div class="row">
+    <div class="col-sm-12 d-inline-flex">
+      <h1 focusOnLoad>Search Facilities</h1>
+      <sup><i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="false" tabindex="0"
+              aria-label="Facility lookup allows the lookup of specific facilities to be listed in the search results. Requires at least 3 characters to begin searching. Advanced search generates facilities lists based on general criteria."
+              [md-tooltip]="facilitySearchToolTip"></i></sup>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Facility Lookup</h4>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      Search by facility ID, facility name, facility DBA, facility CCN, facility NPI, phone number, fax number
+    </div>
+  </div>
+
+  <div class="col-sm-12 p-0">
+    <form>
+      <div class="form-row d-inline-flex w-100">
+        <div class="col-2 pl-0">
+          <select class="eqrs-select" aria-required="true">
+            <option value="" selected>All</option>
+            <option>Open</option>
+            <option>Closed</option>
+            <option>Saved</option>
+            <option>Missing backup facility</option>
+            <option>Missing hours and shifts</option>
+            <option>Offers certified services</option>
+            <option>Missing additional services</option>
+            <option>In my scope</option>
+          </select>
+        </div>
+        <div class="col-10 pr-0">
+
+         <input type="text">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <b>Or</b>
+    </div>
+  </div>
 
   <div class="row">
   <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  cursor-pointer d-flex flex-wrap"
@@ -19,6 +70,58 @@
     <hr>
     <div class="row">
       <div class="col"><b>Location</b></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+        <div><label for="zipCode">Zip code</label></div>
+        <div>
+          <md-input-container>
+            <span class="fa fa-search fa-lg mb-3"></span>
+            <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
+                   [mdAutocomplete]="searchZipCode"
+                   (input)="onZipCodeUpdate($event.target.value)" (keydown.enter)="$event.preventDefault()"
+                   aria-label="Use this auto-suggest to lookup a zip code"/>
+          </md-input-container>
+          <md-autocomplete #searchZipCode="mdAutocomplete">
+            <md-option *ngFor="let zipCode of searchData.zipCodes">{{zipCode}}</md-option>
+            <md-option>No results</md-option>
+          </md-autocomplete>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div><label for="city">City</label></div>
+        <div>
+          <md-input-container>
+            <span class="fa fa-search fa-lg mb-3"></span>
+            <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
+                   [mdAutocomplete]="searchCity" (change)="getSelectedLocationValue($event.target)"
+                   aria-label="Use this auto-suggest to lookup a city"/>
+          </md-input-container>
+          <md-autocomplete #searchCity="mdAutocomplete">
+            <md-option>No results</md-option>
+          </md-autocomplete>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div><label for="state">State</label></div>
+        <div>
+          <select class="eqrs-select" name="state" id="state" (change)="getSelectedLocationValue($event.target)">
+            <option value="" selected disabled></option>
+            <option *ngFor='let state of searchData.states' [value]="state">{{state}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div><label for="network">Network</label></div>
+        <div>
+          <select class="eqrs-select" name="network" id="network" (change)="getSelectedLocationValue($event.target)">
+            <option value="" selected disabled></option>
+            <option *ngFor='let network of searchData.networks' [value]="network">{{network}}</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <hr/>
@@ -173,8 +276,8 @@
     <!-- criteria -->
 
     <div class="row">
-      <div class="col-sm-11">CRITERIA</div>
-      <div class="col-sm-1 text-right cursor-pointer" (click)="removeAllItems()">Clear all</div>
+      <div class="col-sm-10">CRITERIA</div>
+      <div class="col-sm-2 text-right cursor-pointer" (click)="removeAllItems()">Clear all</div>
     </div>
     <hr/>
 
