@@ -38,9 +38,36 @@
             <option>In my scope</option>
           </select>
         </div>
-        <div class="col-10 pr-0">
 
-         <input type="text">
+        <div class="col-10 pr-0">
+          <span class="fa fa-search fa-lg mb-3"></span>
+          <input type="text" [mdAutocomplete]="lookupResults">
+
+
+          <md-autocomplete #lookupResults="mdAutocomplete" >
+
+              <md-option *ngFor="let facility of searchData.facilities" style="white-space: normal;">
+
+                <span [innerHTML]="facility.facilityId + ', '"></span>
+                <span [innerHTML]="facility.facilityLegalName + ', '"></span>
+                <span [innerHTML]="facility.facilityDBAName + ', '"></span>
+                <span [innerHTML]="facility.CCN + ', '"></span>
+                <span [innerHTML]="facility.NPI + ', '"></span>
+                <span [innerHTML]="facility.phoneNo + ', '"></span>
+                <span [innerHTML]="facility.fax + ', '"></span>
+                <span [innerHTML]="facility.city + ', '"></span>
+                <span [innerHTML]="facility.state + ', '"></span>
+                <span [innerHTML]="facility.zip + ', '"></span>
+                <span [innerHTML]="facility.network + ', '"></span>
+                <span [innerHTML]="facility.authBatchSub + ', '"></span>
+                <span [innerHTML]="facility.status"></span>
+
+              </md-option>
+
+              <md-option *ngIf="searchData.facilities.length != 0">
+                Show all results
+              </md-option>
+          </md-autocomplete>
         </div>
       </div>
     </form>
@@ -144,7 +171,7 @@
           <div>
             <select class="eqrs-select" name="providerUseType" id="providerUseType" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor="let providerUseType of providerUseTypes" [value]=providerUseType.description>{{providerUseType.description}}</option>-->
+              <option *ngFor="let providerUseType of searchData.providerUseTypes" [value]=providerUseType>{{providerUseType}}</option>
             </select>
           </div>
         </div>
@@ -153,7 +180,7 @@
           <div>
             <select class="eqrs-select" name="medicareStatus" id="medicareStatus" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor='let medicareStatus of medicareStatuses' [value]="medicareStatus.status">{{medicareStatus.status}}</option>-->
+              <option *ngFor='let medicareStatus of searchData.medicareStatus' [value]="medicareStatus">{{medicareStatus}}</option>
             </select>
           </div>
         </div>

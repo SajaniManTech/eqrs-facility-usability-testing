@@ -14,6 +14,68 @@
 
   "cities": [
     "Owings Mills", "Towson", "Baltimore", "Columbia", "Pikesville"
+  ],
+
+  "medicareStatus": [
+    "Certified", "Pending", "Terminated", "Pending certification"
+  ],
+
+  "providerUseTypes": [
+    "Medicare", "Prison", "Military", "Airforce", "Army", "Navy", "VA"
+  ],
+
+  "facilities": [
+    {
+      "facilityId": "1500000038",
+      "facilityLegalName": "032523 PRESCOTT DIALYSIS (DVA)",
+      "facilityDBAName": "032523 PRESCOTT DIALYSIS (DVA)",
+      "CCN": "32523",
+      "NPI": "1205881232",
+      "phoneNo":"(928)776-9459",
+      "fax":"(928)776-8061",
+      "city":"PRESCOTT",
+      "state":"AZ",
+      "zip":"86301",
+      "programType":"Dialysis",
+      "network":"15",
+      "authBatchSub": "DaVita",
+      "status": "Open",
+      "actions":"Temporarily Close"
+    },
+    {
+      "facilityId": "1500316327",
+      "facilityLegalName": "032593 GRANITE VALLEY DIALYSIS (FMC)",
+      "facilityDBAName": "032593 GRANITE VALLEY DIALYSIS (FMC)",
+      "CCN": "32593",
+      "NPI": "1235241035",
+      "phoneNo":"(623)546-2718",
+      "fax":"(623)546-2827",
+      "city":"SUN CITY WEST",
+      "state":"AZ",
+      "zip":"85375",
+      "programType":"Dialysis",
+      "network":"15",
+      "authBatchSub": "Fresenius Medical Care",
+      "status": "Open",
+      "actions":""
+    },
+    {
+      "facilityId": "1500333923",
+      "facilityLegalName": "032596 NORTHEAST PHOENIX DIALYSIS (DSI)",
+      "facilityDBAName": "032596 NORTHEAST PHOENIX DIALYSIS (DSI)",
+      "CCN": "32596",
+      "NPI": "1235185281",
+      "phoneNo":"(602)765-3919",
+      "fax":"(602)765-9017",
+      "city":"PHOENIX",
+      "state":"AZ",
+      "zip":"85032",
+      "programType":"Dialysis",
+      "network":"15",
+      "authBatchSub": "NRAA",
+      "status": "Open",
+      "actions":""
+    }
   ]
 }
 
