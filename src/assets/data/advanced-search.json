@@ -12,7 +12,9 @@
     21111, 21112, 21113, 21114, 21115, 21116, 21117, 21118, 21119, 21120
   ],
 
-  "cities": []
+  "cities": [
+    "Owings Mills", "Towson", "Baltimore", "Columbia", "Pikesville"
+  ]
 }
 
 

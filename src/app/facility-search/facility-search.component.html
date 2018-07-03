@@ -73,37 +73,43 @@
     </div>
 
     <div class="row">
-      <div class="col-sm">
-        <div><label for="zipCode">Zip code</label></div>
-        <div>
-          <md-input-container>
-            <span class="fa fa-search fa-lg mb-3"></span>
-            <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchZipCode"
-                   (input)="onZipCodeUpdate($event.target.value)" (keydown.enter)="$event.preventDefault()"
-                   aria-label="Use this auto-suggest to lookup a zip code"/>
-          </md-input-container>
-          <md-autocomplete #searchZipCode="mdAutocomplete">
-            <md-option *ngFor="let zipCode of searchData.zipCodes">{{zipCode}}</md-option>
-            <md-option>No results</md-option>
-          </md-autocomplete>
-        </div>
-      </div>
 
-      <div class="col-sm">
-        <div><label for="city">City</label></div>
-        <div>
-          <md-input-container>
-            <span class="fa fa-search fa-lg mb-3"></span>
-            <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchCity" (change)="getSelectedLocationValue($event.target)"
-                   aria-label="Use this auto-suggest to lookup a city"/>
-          </md-input-container>
-          <md-autocomplete #searchCity="mdAutocomplete">
-            <md-option>No results</md-option>
-          </md-autocomplete>
-        </div>
-      </div>
+      <!--<div class="col-sm">-->
+        <!--<div><label for="zipCode">Zip code</label></div>-->
+        <!--<div>-->
+          <!--<md-input-container>-->
+            <!--<span class="fa fa-search fa-lg mb-3"></span>-->
+            <!--<input type="text" name="city" id="zipCode" class="eqrs-input search-input-padding" mdInput-->
+                   <!--[mdAutocomplete]="searchZipCode" (onSelectionChange)="getSelectedLocationValue($event.target.value)"-->
+                   <!--aria-label="Use this auto-suggest to lookup a city"/>-->
+          <!--</md-input-container>-->
+
+          <!--<md-autocomplete #searchZipCode="mdAutocomplete">-->
+            <!--<md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode">-->
+              <!--<span>{{ zipCode }}</span>-->
+            <!--</md-option>-->
+          <!--</md-autocomplete>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="col-sm">-->
+        <!--<div><label for="city">City</label></div>-->
+        <!--<div>-->
+          <!--<md-input-container>-->
+            <!--<span class="fa fa-search fa-lg mb-3"></span>-->
+            <!--<input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput-->
+                   <!--[mdAutocomplete]="searchCity" (onSelectionChange)="getSelectedLocationValue($event.target.value)"-->
+                   <!--aria-label="Use this auto-suggest to lookup a city"/>-->
+          <!--</md-input-container>-->
+          <!--<md-autocomplete #searchCity="mdAutocomplete">-->
+            <!--<md-option *ngFor="let city of searchData.cities" [value]="city">-->
+              <!--<span>{{city}}</span>-->
+            <!--</md-option>-->
+          <!--</md-autocomplete>-->
+        <!--</div>-->
+      <!--</div>-->
+
       <div class="col-sm">
         <div><label for="state">State</label></div>
         <div>
@@ -303,10 +309,11 @@
 
     <div class="row mt-3">
       <div class="col-sm-2">
-        <button class="eqrs-button-primary">Submit</button>
+        <div class="eqrs-button-primary" [routerLink] = "['/facility-search-results']">Submit</div>
       </div>
     </div>
   </form>
 </div>
 
 </div>
+

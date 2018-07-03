@@ -6,13 +6,15 @@ import {MdExpansionModule, MdSelectModule, MdDialogModule, MdAutocompleteModule,
 import { AppComponent } from './app.component';
 import { FacilitySearchComponent } from './facility-search/facility-search.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { FacilitySearchResultsComponent } from './facility-search-results/facility-search-results.component';
+import {routing} from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FacilitySearchComponent
+    FacilitySearchComponent,
+    FacilitySearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MdInputModule,
     MdTooltipModule,
     HttpClientModule,
-
+    routing
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
