@@ -4,9 +4,9 @@ import {FacilitySearchComponent} from './facility-search/facility-search.compone
 import {FacilitySearchResultsComponent} from './facility-search-results/facility-search-results.component';
 
 const appRoutes: Routes = [
-  // { path: '**', component: FacilitySearchComponent },
+  { path: '', component: FacilitySearchComponent},
   { path: 'facility-search-page', component: FacilitySearchComponent },
-  { path: 'facility-search-results', component: FacilitySearchResultsComponent }
+  { path: 'facility-search-results', component: FacilitySearchResultsComponent}
 
 ];
 
