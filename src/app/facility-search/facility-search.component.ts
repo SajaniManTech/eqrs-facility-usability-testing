@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpClientModule} from '@angular/common/http';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-facility-search',
@@ -15,7 +16,8 @@ export class FacilitySearchComponent implements OnInit {
   facilitySearchToolTip = 'Facility lookup allows the lookup of specific facilities to be listed in the search results. Requires at least 3 characters to begin searching. Advanced search generates facilities lists based on general criteria.';
   searchData: any;
   zipCodeResults: any;
-
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
   constructor( private http: HttpClient ) { }
 
   getSelectedSpecificsValue(e: any) {

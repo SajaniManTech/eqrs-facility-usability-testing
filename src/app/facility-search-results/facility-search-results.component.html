@@ -1,141 +1,102 @@
-<h1></h1>
+
 <main class="col-md-12 pt-3 px-4">
-  <h3>This is Facility search results page.</h3>
+  <h1>Search results</h1><hr>
+
 </main>
-<!--<div class="eqrs-datatable-scroll-x ml-2">-->
+<div class="pl-4"> Search criteria: Dialysis</div>
 
-  <!--<dynamic-datatable [data]="facilitySearchResults" [caption]="'This table contains a list of facilities that match the parameters entered in the search facilities page. The data displayed for each facility found is listed in the following columns: Facility ID, Facility legal name, Facility DBA name, CCN, NPI, Phone, Fax, City, State, Zip, Program Type, Network, Authorized Batch Submitting Organization, Status and Actions'" [showCaption]="false" [emptyMessage]="'No Results Found'"-->
-                     <!--[searchFilter]="false" [externalSearch]="false"  >-->
+<div class="pl-4 font-size-table">
+  <table class="table table-striped table-bordered table-layout-auto">
+    <thead>
+    <tr class="text-color-header">
+      <th>Facility ID</th>
+      <th>Facility legal name</th>
+      <th>Facility DBA name</th>
+      <th>CCN</th>
+      <th>NPI</th>
+      <th>Phone</th>
+      <th>Fax</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Program type</th>
+      <th>Network</th>
+      <th>Authorized</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let facility of searchData.facilities">
+      <td><a href="#">{{facility.facilityId}}</a></td>
+      <td>{{facility.facilityLegalName}}</td>
+      <td>{{facility.facilityDBAName}}</td>
+      <td>{{facility.CCN}}</td>
+      <td>{{facility.NPI}}</td>
+      <td>{{facility.phoneNo}}</td>
+      <td>{{facility.fax}}</td>
+      <td>{{facility.city}}</td>
+      <td>{{facility.state}}</td>
+      <td>{{facility.zip}}</td>
+      <td>{{facility.programType}}</td>
+      <td>{{facility.network}}</td>
+      <td>{{facility.authBatchSub}}</td>
+      <td>{{facility.status}}</td>
+      <td><a href="#">{{facility.actions}}</a></td>
 
-    <!--<dynamic-column [field]="'orgId'" [header]="'Facility ID'"  [id]="'facility-id-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<a [routerLink]="['/facility/review-submit/view', selectedFacility.orgId]">-->
-          <!--<span class="value" >{{selectedFacility[column.field]}}</span>-->
-        <!--</a>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
 
-    <!--<dynamic-column [field]="'orgName'" [header]="'Facility legal name'"  [id]="'facility-legal-name-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility[column.field]}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'alternativeOrgName'" [header]="'Facility DBA Name'" [sortable]="false" [id]="'facility-dbaName-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility[column.field]}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'ccn'" [header]="'CCN'" [sortable]="false" [id]="'facility-ccn-column'">-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility[column.field]}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-    <!--<dynamic-column [field]="'npi'" [header]="'NPI'" [sortable]="false" [id]="'facility-npi-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility[column.field]}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-    <!--<dynamic-column [field]="'phone'" [header]="'Phone'" [sortable]="false" [id]="'facility-phone-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgPhoneNumbers[0]?.phoneNumber  | phone}}</span>&lt;!&ndash;use a phone pipe here&ndash;&gt;-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'fax'" [header]="'Fax'" [sortable]="false" [id]="'facility-fax-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgPhoneNumbers[1]?.phoneNumber | phone}}</span>&lt;!&ndash;use a phone pipe here&ndash;&gt;-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'city'" [header]="'City'" [sortable]="false" [id]="'facility-city-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgAddressHistory[0]?.cityName}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-    <!--<dynamic-column [field]="'state'" [header]="'State'" [sortable]="false" [id]="'facility-state-column'"-->
-                    <!--[searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgAddressHistory[0]?.state?.stateCode}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'zip'" [header]="'Zip'" [sortable]="false" [id]="'facility-zip-column'"-->
-                    <!--[searchField]="true" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgAddressHistory[0]?.zipCode}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'programTypeId'" [header]="'Program Type'" [sortable]="false"-->
-                    <!--[id]="'facility-programType-column'" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{ selectedFacility.programTypeId == 1 ? 'Dialysis' : 'Transplant'}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'networkId'" [header]="'Network'" [sortable]="false"-->
-                    <!--[id]="'facility-networkId-column'" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgAssociations[0].parentOrgId}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'authorizedBso'" [header]="'Authorized Batch Submitting Organization'" [sortable]="false"-->
-                    <!--[id]="'facility-bso-column'" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" >{{selectedFacility.orgAssociations[1].userDfndCntntDesc}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="'status'" [header]="'Status'" [sortable]="false"-->
-                    <!--[id]="'facility-status-column'" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<span class="value" > {{getStatus(selectedFacility)}}</span>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="''" [header]="'Actions'" [sortable]="false" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-
-        <!--&lt;!&ndash; Add new drop down button &ndash;&gt;-->
-        <!--<div class="pl-3" ngbDropdown>-->
-          <!--<a ngbDropdownToggle class="dropdown-toggle eqrs-button-dropdown2" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--<i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>-->
-          <!--</a>-->
-
-          <!--<div class="dropdown-menu eqrs-button-dropdown-menu2" aria-labelledby="dropdownMenuButton">  <div class="dropdown-arrow"></div>-->
-            <!--<a class="dropdown-item" href="#">Temporarily close</a>-->
-            <!--<a class="dropdown-item" href="#">Delete facility</a>-->
-            <!--<a class="dropdown-item" href="#">Attestation</a>-->
-            <!--<a class="dropdown-item" href="#">Default preferences</a>-->
-            <!--<a class="dropdown-item" href="#">Personnel</a>-->
-          <!--</div>-->
-        <!--</div> &lt;!&ndash; drop down button ends here&ndash;&gt;-->
-
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-
-    <!--<dynamic-column [field]="''" [header]="'Actions'" [sortable]="false"-->
-                    <!--[id]="'facility-delete-column'" [searchField]="false" >-->
-      <!--<ng-template dynamicTemplate let-column="column" let-selectedFacility="data" [type]="'cell'">-->
-        <!--<ng-container *isAuthorized="'FACILITY_UI.TEMPORARILY_CLOSE_FACILITY'">-->
-          <!--<a   *ngIf="!selectedFacility.closeDate" href="javascript:void(0)" (click)="onTempClose(selectedFacility['orgId'], selectedFacility['temporarilyClosedIndicator'])" id="temporary_close_{{selectedFacility['orgId']}}" [attr.aria-label]="selectedFacility['temporarilyClosedIndicator'] == 1?'Re-Open':'Temporarily Close'" >{{selectedFacility['temporarilyClosedIndicator'] == 1?'Re-Open':'Temporarily Close'}}</a>-->
-        <!--</ng-container>-->
-        <!--<ng-container *isAuthorized="'FACILITY_UI.DELETE_FACILITY'">-->
-          <!--<span *ngIf=" selectedFacility['deletable']"> | </span>-->
-          <!--<a   *ngIf="selectedFacility['deletable']"  href="javascript:void(0)" (click)="onDelete(selectedFacility['orgId'])" id="delete_facility_{{selectedFacility['orgId']}}" class="fa fa-trash eqrs-trash-link" aria-label="Delete facility"></a>-->
-        <!--</ng-container>-->
-      <!--</ng-template>-->
-    <!--</dynamic-column>-->
-    <!--<pagination [pageSizes]="[25]" [numberOfPageOptions]="3"></pagination>-->
-  <!--</dynamic-datatable>-->
-<!--</div>-->
+    </tr>
+    <tr>
+      <td><a href="#">1500000038</a></td>
+      <td>032523 PRESCOTT DIALYSIS (DVA)</td>
+      <td>032523 PRESCOTT DIALYSIS (DVA)</td>
+      <td>32523</td>
+      <td>1205881232</td>
+      <td>(928)776-9459</td>
+      <td>(928)776-8061</td>
+      <td>PRESCOTT</td>
+      <td>AZ</td>
+      <td>86301</td>
+      <td>Dialysis</td>
+      <td>15</td>
+      <td>DaVita</td>
+      <td>Open</td>
+      <td><a href="#">Temporarily Close</a></td>
+    </tr>
+    <tr>
+      <td><a href="#">1500316327</a></td>
+      <td>032593 GRANITE VALLEY DIALYSIS (FMC)</td>
+      <td>032593 GRANITE VALLEY DIALYSIS (FMC)</td>
+      <td>32593</td>
+      <td>1235241035</td>
+      <td>(623)546-2718</td>
+      <td>(623)546-2827</td>
+      <td>SUN CITY WEST</td>
+      <td>AZ</td>
+      <td>85375</td>
+      <td>Dialysis</td>
+      <td>15</td>
+      <td>Fresenius Medical Care</td>
+      <td>Open</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a href="#">1500333923</a></td>
+      <td>032596 NORTHEAST PHOENIX DIALYSIS (DSI)</td>
+      <td>032596 NORTHEAST PHOENIX DIALYSIS (DSI)</td>
+      <td>32596</td>
+      <td>1235185281</td>
+      <td>(602)765-3919</td>
+      <td>(602)765-9017</td>
+      <td>PHOENIX</td>
+      <td>AZ</td>
+      <td>85032</td>
+      <td>Dialysis</td>
+      <td>15</td>
+      <td>NRAA</td>
+      <td>Open</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
