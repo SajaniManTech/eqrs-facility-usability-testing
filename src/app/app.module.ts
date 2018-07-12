@@ -8,6 +8,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { FacilitySearchResultsComponent } from './facility-search-results/facility-search-results.component';
 import {routing} from './app-routing.module';
+import { DialogModule} from 'primeng/dialog';
+import { ButtonModule} from 'primeng/button';
+import {SelectCriteriaService} from './services/select-criteria.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,11 @@ import {routing} from './app-routing.module';
     MdInputModule,
     MdTooltipModule,
     HttpClientModule,
+    DialogModule,
+    ButtonModule,
     routing
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, SelectCriteriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

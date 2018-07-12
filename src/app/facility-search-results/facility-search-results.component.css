@@ -20,3 +20,17 @@ tr th, tr td{
 .table td, .table th {
   padding: .5rem;
 }
+#wrapper {
+  overflow-x: scroll !important;
+}
+
+.link-color {
+  color: #0071BB;
+}
+h1 {
+  margin-bottom: 8px;
+}
+hr {
+  margin-top: 0;
+  margin-bottom: 6px;
+}

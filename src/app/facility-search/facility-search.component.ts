@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpClientModule} from '@angular/common/http';
-import {FormControl} from '@angular/forms';
+import {SelectCriteriaService} from '../services/select-criteria.service';
 
 @Component({
   selector: 'app-facility-search',
@@ -8,7 +8,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./facility-search.component.css']
 })
 export class FacilitySearchComponent implements OnInit {
-
+sss: any;
   showAdvSearchPanel = false;
   specificsArray: string[] = [];
   locationArray: string[] = [];
@@ -16,9 +16,10 @@ export class FacilitySearchComponent implements OnInit {
   facilitySearchToolTip = 'Facility lookup allows the lookup of specific facilities to be listed in the search results. Requires at least 3 characters to begin searching. Advanced search generates facilities lists based on general criteria.';
   searchData: any;
   zipCodeResults: any;
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  constructor( private http: HttpClient ) { }
+  display: boolean = false;
+
+  constructor( private http: HttpClient,
+               private selectCriteriaService: SelectCriteriaService) { }
 
   getSelectedSpecificsValue(e: any) {
     let specFlag: boolean = true;
@@ -47,6 +48,13 @@ export class FacilitySearchComponent implements OnInit {
     }
   }
 
+  showManyResultsModal() {
+    if (this.specificsArray.length + this.locationArray.length >= 20) {
+      return true;
+    }
+    return false;
+  }
+
   removeAllItems() {
     this.locationArray = [];
     this.specificsArray = [];
@@ -55,12 +63,17 @@ export class FacilitySearchComponent implements OnInit {
   onZipCodeUpdate(zipCode: string) {
     zipCode = zipCode.trim();
     if (zipCode.length >= 4) {
-      this.zipCodeResults = this.searchData.zipCodes.filter((value) => { return value.indexOf(zipCode) != -1});
+      this.zipCodeResults = this.searchData.zipCodes.filter((value) => { return value.indexOf(zipCode) != -1 });
     }
+  }
+
+  showDialog() {
+    this.display = true;
   }
 
   ngOnInit() {
 
+      this.sss = this.selectCriteriaService.removeAllItems();
       this.http.get('assets/data/advanced-search.json').subscribe(
         data => {
           this.searchData = data;

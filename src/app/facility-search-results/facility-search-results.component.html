@@ -3,15 +3,15 @@
   <h1>Search results</h1><hr>
 
 </main>
-<div class="pl-4"> Search criteria: Dialysis</div>
+<div class="ml-4 mb-4"> Search criteria: <span *ngIf = "">Dialysis</span></div>
 
-<div class="pl-4 font-size-table">
+<div class="ml-4 mr-4 font-size-table" id="wrapper">
   <table class="table table-striped table-bordered table-layout-auto">
     <thead>
     <tr class="text-color-header">
       <th>Facility ID</th>
-      <th>Facility legal name</th>
-      <th>Facility DBA name</th>
+      <th nowrap>Facility legal name</th>
+      <th nowrap>Facility DBA name</th>
       <th>CCN</th>
       <th>NPI</th>
       <th>Phone</th>
@@ -19,7 +19,7 @@
       <th>City</th>
       <th>State</th>
       <th>Zip</th>
-      <th>Program type</th>
+      <th nowrap>Program type</th>
       <th>Network</th>
       <th>Authorized</th>
       <th>Status</th>
@@ -28,13 +28,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let facility of searchData.facilities">
-      <td><a href="#">{{facility.facilityId}}</a></td>
+      <td><a href="#" class="link-color">{{facility.facilityId}}</a></td>
       <td>{{facility.facilityLegalName}}</td>
       <td>{{facility.facilityDBAName}}</td>
       <td>{{facility.CCN}}</td>
       <td>{{facility.NPI}}</td>
-      <td>{{facility.phoneNo}}</td>
-      <td>{{facility.fax}}</td>
+      <td nowrap>{{facility.phoneNo}}</td>
+      <td nowrap>{{facility.fax}}</td>
       <td>{{facility.city}}</td>
       <td>{{facility.state}}</td>
       <td>{{facility.zip}}</td>
@@ -42,61 +42,11 @@
       <td>{{facility.network}}</td>
       <td>{{facility.authBatchSub}}</td>
       <td>{{facility.status}}</td>
-      <td><a href="#">{{facility.actions}}</a></td>
+      <td><a href="#" class="link-color">{{facility.actions}}</a></td>
 
 
     </tr>
-    <tr>
-      <td><a href="#">1500000038</a></td>
-      <td>032523 PRESCOTT DIALYSIS (DVA)</td>
-      <td>032523 PRESCOTT DIALYSIS (DVA)</td>
-      <td>32523</td>
-      <td>1205881232</td>
-      <td>(928)776-9459</td>
-      <td>(928)776-8061</td>
-      <td>PRESCOTT</td>
-      <td>AZ</td>
-      <td>86301</td>
-      <td>Dialysis</td>
-      <td>15</td>
-      <td>DaVita</td>
-      <td>Open</td>
-      <td><a href="#">Temporarily Close</a></td>
-    </tr>
-    <tr>
-      <td><a href="#">1500316327</a></td>
-      <td>032593 GRANITE VALLEY DIALYSIS (FMC)</td>
-      <td>032593 GRANITE VALLEY DIALYSIS (FMC)</td>
-      <td>32593</td>
-      <td>1235241035</td>
-      <td>(623)546-2718</td>
-      <td>(623)546-2827</td>
-      <td>SUN CITY WEST</td>
-      <td>AZ</td>
-      <td>85375</td>
-      <td>Dialysis</td>
-      <td>15</td>
-      <td>Fresenius Medical Care</td>
-      <td>Open</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="#">1500333923</a></td>
-      <td>032596 NORTHEAST PHOENIX DIALYSIS (DSI)</td>
-      <td>032596 NORTHEAST PHOENIX DIALYSIS (DSI)</td>
-      <td>32596</td>
-      <td>1235185281</td>
-      <td>(602)765-3919</td>
-      <td>(602)765-9017</td>
-      <td>PHOENIX</td>
-      <td>AZ</td>
-      <td>85032</td>
-      <td>Dialysis</td>
-      <td>15</td>
-      <td>NRAA</td>
-      <td>Open</td>
-      <td></td>
-    </tr>
+
     </tbody>
   </table>
 </div>

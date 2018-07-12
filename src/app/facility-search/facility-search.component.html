@@ -2,8 +2,8 @@
 
   <div class="row">
     <div class="col-sm-12 d-inline-flex">
-      <h1 focusOnLoad>Search Facilities</h1>
-      <sup><i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="false" tabindex="0"
+      <h1>Search Facilities</h1>
+      <sup><i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="false" tabindex="0" style="font-size: 20px; color: #0071BB"
               aria-label="Facility lookup allows the lookup of specific facilities to be listed in the search results. Requires at least 3 characters to begin searching. Advanced search generates facilities lists based on general criteria."
               [md-tooltip]="facilitySearchToolTip"></i></sup>
     </div>
@@ -24,7 +24,7 @@
 
   <div class="col-sm-12 p-0">
     <form>
-      <div class="form-row d-inline-flex w-100">
+      <div class="form-row d-inline-flex w-100 pl-1">
         <div class="col-2 pl-0">
           <select class="eqrs-select" aria-required="true">
             <option value="" selected>All</option>
@@ -43,11 +43,9 @@
           <span class="fa fa-search fa-lg mb-3"></span>
           <input type="text" [mdAutocomplete]="lookupResults">
 
-
           <md-autocomplete #lookupResults="mdAutocomplete" >
-
-              <md-option *ngFor="let facility of searchData.facilities" style="white-space: normal;">
-
+            <div *ngFor="let facility of searchData.facilities">
+              <md-option  style="white-space: normal;">
                 <span [innerHTML]="facility.facilityId + ', '"></span>
                 <span [innerHTML]="facility.facilityLegalName + ', '"></span>
                 <span [innerHTML]="facility.CCN + ', '"></span>
@@ -59,12 +57,11 @@
                 <span [innerHTML]="facility.zip + ', '"></span>
                 <span [innerHTML]="facility.authBatchSub + ', '"></span>
                 <span [innerHTML]="facility.status"></span>
-
               </md-option>
-
-              <md-option *ngIf="searchData.facilities.length != 0">
-                Show all results
-              </md-option>
+            </div>
+            <md-option *ngIf="searchData.facilities.length != 0">
+                  <a [routerLink] = "['/facility-search-results']">Show all results</a>
+            </md-option>
           </md-autocomplete>
         </div>
       </div>
@@ -78,22 +75,26 @@
   </div>
 
   <div class="row">
-  <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  cursor-pointer d-flex flex-wrap"
-       aria-label="Advanced search panel, when selected with expand / collapse the advanced search panel.">
-    <h4 class="text-color-header"><b>Advanced Search</b></h4>
-    <sup class="que-cir-position">
-      <i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="true" tabindex="0"
-         [md-tooltip]="facilityAdvancedSearchToolTip"></i>
-    </sup>
-    <div class="ml-1 mt-2 text-color-header icon-size">
-      <b><i [ngClass]="(showAdvSearchPanel) ? 'fa fa-angle-right' : 'fa fa-angle-down'"></i></b>
+
+    <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  cursor-pointer d-flex flex-wrap"
+         aria-label="Advanced search panel, when selected with expand / collapse the advanced search panel.">
+      <h4 class="text-color-header"><b>Advanced Search</b></h4>
+
+      <div class="ml-1 mt-2 text-color-header icon-size">
+        <b><i [ngClass]="(showAdvSearchPanel) ? 'fa fa-angle-right' : 'fa fa-angle-down'"></i></b>
+      </div>
+
+      <sup class="que-cir-position">
+        <i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="true" tabindex="0"
+           [md-tooltip]="facilityAdvancedSearchToolTip"></i>
+      </sup>
     </div>
-  </div>
+
+    <hr/>
 
   <form class="col-sm-12" *ngIf="showAdvSearchPanel">
     <!-- location -->
-    <hr>
-    <div class="row">
+    <div class="row mb-2">
       <div class="col"><b>Location</b></div>
     </div>
 
@@ -104,7 +105,7 @@
         <div>
           <md-input-container>
             <span class="fa fa-search fa-lg mb-3"></span>
-            <input type="text" name="city" id="zipCode" class="eqrs-input search-input-padding" mdInput
+            <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
                    [mdAutocomplete]="searchZipCode" (onSelectionChange)="getSelectedLocationValue($event.target.value)"
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
@@ -160,11 +161,14 @@
     <!-- specifics -->
 
     <div class="mb-3">
-      <div class="row">
+
+      <div class="row mb-2">
         <div class="col"><b>Specifics</b></div>
       </div>
+
       <div class="row mb-1">
-        <div class="col-sm-3 mt-4">
+
+        <div class="col-sm resp-margin">
           <div><label for="providerUseType">Provider use type</label></div>
           <div>
             <select class="eqrs-select" name="providerUseType" id="providerUseType" (change)="getSelectedSpecificsValue($event.target)">
@@ -173,7 +177,8 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-3 mt-4">
+
+        <div class="col-sm resp-margin">
           <div><label for="medicareStatus">Medicare status</label></div>
           <div>
             <select class="eqrs-select" name="medicareStatus" id="medicareStatus" (change)="getSelectedSpecificsValue($event.target)">
@@ -182,8 +187,9 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-4 w-auth-batch">
-          <div><label class="col-sm-7 pl-0 w-label-auth" for="authorizedBatchSubOrg">Authorized batch submitting organization </label></div>
+
+        <div class="col-sm w-auth-batch">
+          <div><label class="col-sm pl-0 w-label-auth" for="authorizedBatchSubOrg">Authorized batch submitting organization </label></div>
           <div>
             <select class="eqrs-select" name="authorizedBatchSubOrg" id="authorizedBatchSubOrg" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
@@ -194,10 +200,12 @@
             </select>
           </div>
         </div>
+
       </div>
 
       <div class="row">
-        <div class="col-sm-3">
+
+        <div class="col-sm">
           <div><label for="typeOfServices">Type of services</label></div>
           <div>
             <select class="eqrs-select" name="typeOfServices" id="typeOfServices" (change)="getSelectedSpecificsValue($event.target)">
@@ -209,7 +217,8 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-3">
+
+        <div class="col-sm">
           <div><label for="additionalServices">Additional services</label></div>
           <div>
             <select class="eqrs-select" name="additionalServices" id="additionalServices" (change)="getSelectedSpecificsValue($event.target)">
@@ -223,7 +232,8 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-4">
+
+        <div class="col-sm">
           <div><label for="programType">Program type </label></div>
           <div>
             <select class="eqrs-select" name="programType" id="programType" (change)="getSelectedSpecificsValue($event.target)">
@@ -234,10 +244,12 @@
             </select>
           </div>
         </div>
+
       </div>
 
       <div class="row">
-        <div class="col-sm-3">
+
+        <div class="col-sm-4">
           <div><label for="managingOrganization">Managing organization</label></div>
           <div>
             <select class="eqrs-select" name="managingOrganization" id="managingOrganization" (change)="getSelectedSpecificsValue($event.target)">
@@ -247,7 +259,7 @@
           </div>
         </div>
 
-        <div class="col-sm-3 m-pri-owner">
+        <div class="col-sm-4">
           <div><label for="primaryOwner">Primary owner</label></div>
           <div>
             <select class="eqrs-select" name="primaryOwner" id="primaryOwner" (change)="getSelectedSpecificsValue($event.target)">
@@ -257,13 +269,14 @@
             </select>
           </div>
         </div>
+
       </div>
     </div>
     <hr/>
 
     <!-- filters -->
 
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-12"><b>Filters</b></div>
       <div class="col-sm-12 d-flex">
         <div class="col-sm-1 pr-0 pl-0 mt-1">Show:</div>
@@ -307,15 +320,15 @@
     <!-- criteria -->
 
     <div class="row">
-      <div class="col-sm-10">CRITERIA</div>
-      <div class="col-sm-2 text-right cursor-pointer" (click)="removeAllItems()">Clear all</div>
+      <div class="col-sm-10 m-bottom">CRITERIA</div>
+      <div class="col-sm-2 text-right cursor-pointer clear-all-color" (click)="removeAllItems()">Clear all</div>
     </div>
     <hr/>
 
     <div class="row pl-3 d-flex" *ngIf="locationArray.length != 0">
       <b class="col-sm-12 pl-0">Location</b>
       <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of locationArray; let i = index;">
-        <div class="p-2 border-right"><span>{{item}}</span></div>
+        <div class="p-2 border-right"><span><b>{{item}}</b></span></div>
         <div class="p-2" (click)="locationArray.splice(i,1)"><div class="fa fa-times"></div></div>
       </div>
     </div>
@@ -323,7 +336,7 @@
     <div class="row pl-3 mt-3 d-flex" *ngIf="specificsArray.length != 0">
       <b class="col-sm-12 pl-0">Specifics</b>
       <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of specificsArray; let i = index;">
-        <div class="p-2 border-right"><span>{{item}}</span></div>
+        <div class="p-2 border-right"><span><b>{{item}}</b></span></div>
         <div class="p-2" (click)="specificsArray.splice(i,1)"><div class="fa fa-times"></div></div>
       </div>
     </div>
@@ -334,12 +347,21 @@
 
     <div class="row mt-3">
       <div class="col-sm-2">
-        <button class="eqrs-button-primary" [routerLink] = "['/facility-search-results']">Submit</button>
+        <button class="eqrs-button-primary" [disabled]="specificsArray.length + locationArray.length == 0" [routerLink] = "['/facility-search-results']">Submit</button>
       </div>
     </div>
   </form>
 </div>
 
+
 </div>
 
+<!--<p-dialog header="Title" [(visible)]="display">-->
+  <!--Content-->
+<!--</p-dialog>-->
 
+<!--<button type="text" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Show"></button>-->
+
+
+
+<h1 *ngIf="showManyResultsModal()" class="p-4">Too many results, narrow your search!</h1>
