@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpClientModule} from '@angular/common/http';
 import {SelectCriteriaService} from '../services/select-criteria.service';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-facility-search',
@@ -33,6 +34,7 @@ sss: any;
       }
       if (specFlag) this.specificsArray.push(value);
     }
+    this.removeAllItems();
   }
 
   getSelectedLocationValue(e: any) {
@@ -46,6 +48,7 @@ sss: any;
       }
       if (locFlag) this.locationArray.push(value);
     }
+    this.removeAllItems();
   }
 
   showManyResultsModal() {
@@ -54,10 +57,28 @@ sss: any;
     }
     return false;
   }
-
-  removeAllItems() {
+  clearAll() {
     this.locationArray = [];
     this.specificsArray = [];
+  }
+
+  removeAllItems() {
+    for (let k = 0; k <= this.searchData.dropdownArrayNames.length - 1; k++) {
+      let elementId =  this.searchData.dropdownArrayNames[k];
+      let x = document.getElementById(elementId);
+      document.getElementById(elementId).innerText = null;
+        for (let i = 0; i <= this.searchData[elementId].length; i++) {
+          let option = document.createElement('option');
+          if (i === 0) {
+            option.innerHTML = ' <option value=""></option>';
+            x.appendChild(option);
+          } else if (i > 0) {
+            let item = this.searchData[elementId];
+              option.innerHTML = `<option value="${item[i - 1]}">${item[i - 1]}</option>`;
+              x.appendChild(option);
+            }
+        }
+    }
   }
 
   onZipCodeUpdate(zipCode: string) {

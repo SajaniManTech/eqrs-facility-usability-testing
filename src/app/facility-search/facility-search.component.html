@@ -137,18 +137,18 @@
       </div>
 
       <div class="col-sm">
-        <div><label for="state">State</label></div>
+        <div><label for="states">State</label></div>
         <div>
-          <select class="eqrs-select" name="state" id="state" (change)="getSelectedLocationValue($event.target)">
+          <select class="eqrs-select" name="state" id="states" (change)="getSelectedLocationValue($event.target)">
             <option value="" selected disabled></option>
             <option *ngFor='let state of searchData.states' [value]="state">{{state}}</option>
           </select>
         </div>
       </div>
       <div class="col-sm">
-        <div><label for="network">Network</label></div>
+        <div><label for="networks">Network</label></div>
         <div>
-          <select class="eqrs-select" name="network" id="network" (change)="getSelectedLocationValue($event.target)">
+          <select class="eqrs-select" name="network" id="networks" (change)="getSelectedLocationValue($event.target)">
             <option value="" selected disabled></option>
             <option *ngFor='let network of searchData.networks' [value]="network">{{network}}</option>
           </select>
@@ -169,9 +169,9 @@
       <div class="row mb-1">
 
         <div class="col-sm resp-margin">
-          <div><label for="providerUseType">Provider use type</label></div>
+          <div><label for="providerUseTypes">Provider use type</label></div>
           <div>
-            <select class="eqrs-select" name="providerUseType" id="providerUseType" (change)="getSelectedSpecificsValue($event.target)">
+            <select class="eqrs-select" name="providerUseType" id="providerUseTypes" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
               <option *ngFor="let providerUseType of searchData.providerUseTypes" [value]=providerUseType>{{providerUseType}}</option>
             </select>
@@ -193,10 +193,7 @@
           <div>
             <select class="eqrs-select" name="authorizedBatchSubOrg" id="authorizedBatchSubOrg" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <option value="DaVita">DaVita</option>
-              <option value="Dialysis Clinic, Inc.">Dialysis Clinic, Inc.</option>
-              <option value="Fresenius Medical Care">Fresenius Medical Care</option>
-              <option value="NRAA">NRAA</option>
+              <option *ngFor='let authBatch of searchData.authorizedBatchSubOrg' [value]="authBatch">{{authBatch}}</option>
             </select>
           </div>
         </div>
@@ -210,10 +207,7 @@
           <div>
             <select class="eqrs-select" name="typeOfServices" id="typeOfServices" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor="let typeOfservice of typeOfServices" [value]=typeOfservice.description>{{typeOfservice.description}}</option>-->
-              <option value="Peritoneal dialysis">Peritoneal dialysis</option>
-              <option value="Hemodialysis">Hemodialysis</option>
-              <option value="Dialyzer reuse">Dialyzer reuse</option>
+              <option *ngFor="let typeOfservice of searchData.typeOfServices" [value]=typeOfservice>{{typeOfservice}}</option>
             </select>
           </div>
         </div>
@@ -223,24 +217,17 @@
           <div>
             <select class="eqrs-select" name="additionalServices" id="additionalServices" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor='let additionalService of additionalServices' value="additionalService.status">{{additionalService.status}}</option>-->
-              <option value="Accepts pediatric">Accepts pediatric</option>
-              <option value="Accepts transients">Accepts transients</option>
-              <option value="Shifts start after 5 p.m.">Shifts start after 5 p.m.</option>
-              <option value="Isolation stations">Isolation stations</option>
-              <option value="Patients receiving dialysis within LTC facilities">Patients receiving dialysis within LTC facilities</option>
+              <option *ngFor='let additionalService of searchData.additionalServices' [value]="additionalService">{{additionalService}}</option>
             </select>
           </div>
         </div>
 
         <div class="col-sm">
-          <div><label for="programType">Program type </label></div>
+          <div><label for="programTypes">Program type </label></div>
           <div>
-            <select class="eqrs-select" name="programType" id="programType" (change)="getSelectedSpecificsValue($event.target)">
+            <select class="eqrs-select" name="programType" id="programTypes" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor='let programType of programTypes' value="programType.orgId">{{programType.orgId}}</option>-->
-              <option value="Dialysis">Dialysis</option>
-              <option value="Transplant">Transplant</option>
+              <option *ngFor='let programType of searchData.programTypes' [value]="programType">{{programType}}</option>
             </select>
           </div>
         </div>
@@ -264,8 +251,7 @@
           <div>
             <select class="eqrs-select" name="primaryOwner" id="primaryOwner" (change)="getSelectedSpecificsValue($event.target)">
               <option value="" selected disabled></option>
-              <!--<option *ngFor='let primaryOwner of primaryOwners' value="primaryOwner.status">{{primaryOwner.status}}</option>-->
-              <option value="DaVita">DaVita</option>
+              <option *ngFor='let primaryOwner of searchData.primaryOwner' [value]="primaryOwner">{{primaryOwner}}</option>
             </select>
           </div>
         </div>
@@ -321,7 +307,7 @@
 
     <div class="row">
       <div class="col-sm-10 m-bottom">CRITERIA</div>
-      <div class="col-sm-2 text-right cursor-pointer clear-all-color" (click)="removeAllItems()">Clear all</div>
+      <div class="col-sm-2 text-right cursor-pointer clear-all-color" (click)="clearAll()">Clear all</div>
     </div>
     <hr/>
 

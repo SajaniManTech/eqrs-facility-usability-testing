@@ -25,6 +25,25 @@
     "Medicare", "Prison", "Military", "Airforce", "Army", "Navy", "VA"
   ],
 
+  "authorizedBatchSubOrg": [
+    "DaVita", "Dialysis Clinic, Inc.", "Fresenius Medical Care", "NRAA"
+  ],
+
+  "typeOfServices": [ "Peritoneal dialysis", "Hemodialysis", "Dialyzer reuse"],
+
+  "additionalServices": [
+    "Accepts pediatric", "Accepts transients", "Shifts start after 5 p.m.", "Isolation stations", "Patients receiving dialysis within LTC facilities"
+  ],
+
+  "programTypes": ["Transplant", "Dialysis"],
+
+  "primaryOwner": [ "DaVita"],
+
+  "dropdownArrayNames": [
+    "states", "networks", "providerUseTypes", "medicareStatus", "authorizedBatchSubOrg", "typeOfServices", "additionalServices", "programTypes",
+    "primaryOwner"
+  ],
+
   "facilities": [
     {
       "facilityId": "1500000038",
