@@ -76,8 +76,8 @@
 
   <div class="row">
 
-    <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  cursor-pointer d-flex flex-wrap"
-         aria-label="Advanced search panel, when selected with expand / collapse the advanced search panel.">
+    <div (click)="showAdvSearchPanel = !showAdvSearchPanel" class="col-sm-12  p-0 ml-3 mr-4 cursor-pointer d-flex flex-wrap border-bottom-hr"
+         aria-label="Advanced search panel, when selected with expand / collapse the advanced search panel." >
       <h4 class="text-color-header"><b>Advanced Search</b></h4>
 
       <div class="ml-1 mt-2 text-color-header icon-size">
@@ -88,13 +88,12 @@
         <i class="fa fa-question-circle eqrs-help-tooltip" aria-hidden="true" tabindex="0"
            [md-tooltip]="facilityAdvancedSearchToolTip"></i>
       </sup>
-    </div>
 
-    <hr/>
+    </div>
 
   <form class="col-sm-12" *ngIf="showAdvSearchPanel">
     <!-- location -->
-    <div class="row mb-2">
+    <div class="row mb-2 mt-3">
       <div class="col"><b>Location</b></div>
     </div>
 
@@ -106,13 +105,13 @@
           <md-input-container>
             <span class="fa fa-search fa-lg mb-3"></span>
             <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchZipCode" (onSelectionChange)="getSelectedLocationValue($event.target.value)"
+                   [mdAutocomplete]="searchZipCode"
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
 
-          <md-autocomplete #searchZipCode="mdAutocomplete">
-            <md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode">
-              <span>{{ zipCode }}</span>
+          <md-autocomplete #searchZipCode="mdAutocomplete" class="w-100">
+            <md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode" (onSelectionChange)="locationArray.push(zipCode)">
+              <div class="p-2 w-100">{{ zipCode }}</div>
             </md-option>
           </md-autocomplete>
 
@@ -125,12 +124,12 @@
           <md-input-container>
             <span class="fa fa-search fa-lg mb-3"></span>
             <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchCity" (onSelectionChange)="getSelectedLocationValue($event.target.value)"
+                   [mdAutocomplete]="searchCity"
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
           <md-autocomplete #searchCity="mdAutocomplete">
-            <md-option *ngFor="let city of searchData.cities" [value]="city">
-              <span>{{city}}</span>
+            <md-option *ngFor="let city of searchData.cities" [value]="city" (onSelectionChange)="locationArray.push(city)">
+              <div class="p-2 w-100">{{city}}</div>
             </md-option>
           </md-autocomplete>
         </div>

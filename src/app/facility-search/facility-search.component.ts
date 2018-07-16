@@ -6,7 +6,7 @@ import {element} from 'protractor';
 @Component({
   selector: 'app-facility-search',
   templateUrl: './facility-search.component.html',
-  styleUrls: ['./facility-search.component.css']
+  styleUrls: ['./facility-search.component.scss']
 })
 export class FacilitySearchComponent implements OnInit {
 sss: any;
@@ -36,7 +36,11 @@ sss: any;
     }
     this.removeAllItems();
   }
-
+// getSelectedLocation(e: any, city: any) {
+//     if (e.source.selected) {
+//       this.locationArray.push(city);
+//     }
+// }
   getSelectedLocationValue(e: any) {
     let locFlag = true;
     let value = e.options[e.selectedIndex].value;
