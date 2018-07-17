@@ -70,7 +70,7 @@ h4 {
 .mat-autocomplete-panel {
   width: 100% !important;
 }
-.p-2.w-100:hover {
+.p-1.w-100:hover {
   background-color: #e7e7e7;
 }
 .border-bottom-hr {
@@ -121,6 +121,18 @@ h4 {
 @include select;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 10px 5px 10px;
+  white-space: normal;
+}
 
+.flex-container > p {
+  width: auto;
+}
 
-
+p {
+  word-break: keep-all;
+  margin-bottom: 0;
+}
