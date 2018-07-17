@@ -107,7 +107,7 @@
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
 
-          <md-autocomplete #searchZipCode="mdAutocomplete" class="w-100">
+          <md-autocomplete #searchZipCode="mdAutocomplete">
             <md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode" (onSelectionChange)="locationArray.push(zipCode)">
               <div class="p-1 w-100">{{ zipCode }}</div>
             </md-option>
