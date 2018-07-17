@@ -103,7 +103,7 @@
           <md-input-container>
             <span class="fa fa-search fa-lg mb-3"></span>
             <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchZipCode"
+                   [mdAutocomplete]="searchZipCode" (keydown.enter)="$event.preventDefault()"
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
 
@@ -122,7 +122,7 @@
           <md-input-container>
             <span class="fa fa-search fa-lg mb-3"></span>
             <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchCity"
+                   [mdAutocomplete]="searchCity" (keydown.enter)="$event.preventDefault()"
                    aria-label="Use this auto-suggest to lookup a city"/>
           </md-input-container>
           <md-autocomplete #searchCity="mdAutocomplete">
