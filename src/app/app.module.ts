@@ -11,6 +11,7 @@ import {routing} from './app-routing.module';
 import { DialogModule} from 'primeng/dialog';
 import { ButtonModule} from 'primeng/button';
 import {SelectCriteriaService} from './services/select-criteria.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import {SelectCriteriaService} from './services/select-criteria.service';
     HttpClientModule,
     DialogModule,
     ButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
     routing
   ],
   providers: [HttpClient, SelectCriteriaService],

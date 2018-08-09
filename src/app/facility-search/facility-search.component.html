@@ -89,248 +89,258 @@
 
     </div>
 
-  <form class="col-sm-12" *ngIf="showAdvSearchPanel">
-    <!-- location -->
-    <div class="row mb-2 mt-3">
-      <div class="col"><b>Location</b></div>
-    </div>
+  <form class="col-md-12 d-flex pr-0" *ngIf="showAdvSearchPanel">
 
-    <div class="row">
+    <div class="col-md-8">
 
-      <div class="col-sm">
-        <div><label for="zipCode">Zip code</label></div>
-        <div>
-          <md-input-container>
-            <span class="fa fa-search fa-lg mb-3"></span>
-            <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchZipCode" (keydown.enter)="$event.preventDefault()"
-                   aria-label="Use this auto-suggest to lookup a city"/>
-          </md-input-container>
-
-          <md-autocomplete #searchZipCode="mdAutocomplete">
-            <md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode" (onSelectionChange)="locationArray.push(zipCode)">
-              <div class="p-1 w-100">{{ zipCode }}</div>
-            </md-option>
-          </md-autocomplete>
-
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <div><label for="city">City</label></div>
-        <div>
-          <md-input-container>
-            <span class="fa fa-search fa-lg mb-3"></span>
-            <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
-                   [mdAutocomplete]="searchCity" (keydown.enter)="$event.preventDefault()"
-                   aria-label="Use this auto-suggest to lookup a city"/>
-          </md-input-container>
-          <md-autocomplete #searchCity="mdAutocomplete">
-            <md-option *ngFor="let city of searchData.cities" [value]="city" (onSelectionChange)="locationArray.push(city)">
-              <div class="p-1 w-100">{{city}}</div>
-            </md-option>
-          </md-autocomplete>
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <div><label for="states">State</label></div>
-        <div>
-          <select class="eqrs-select" name="state" id="states" (change)="getSelectedLocationValue($event.target)">
-            <option value="" selected disabled></option>
-            <option *ngFor='let state of searchData.states' [value]="state">{{state}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div><label for="networks">Network</label></div>
-        <div>
-          <select class="eqrs-select" name="network" id="networks" (change)="getSelectedLocationValue($event.target)">
-            <option value="" selected disabled></option>
-            <option *ngFor='let network of searchData.networks' [value]="network">{{network}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <hr/>
-
-    <!-- specifics -->
-
-    <div class="mb-3">
-
-      <div class="row mb-2">
-        <div class="col"><b>Specifics</b></div>
-      </div>
-
-      <div class="row mb-1">
-
-        <div class="col-sm resp-margin">
-          <div><label for="providerUseTypes">Provider use type</label></div>
-          <div>
-            <select class="eqrs-select" name="providerUseType" id="providerUseTypes" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor="let providerUseType of searchData.providerUseTypes" [value]=providerUseType>{{providerUseType}}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-sm resp-margin">
-          <div><label for="medicareStatus">Medicare status</label></div>
-          <div>
-            <select class="eqrs-select" name="medicareStatus" id="medicareStatus" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor='let medicareStatus of searchData.medicareStatus' [value]="medicareStatus">{{medicareStatus}}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-sm w-auth-batch">
-          <div><label class="col-sm pl-0 w-label-auth" for="authorizedBatchSubOrg">Authorized batch submitting organization </label></div>
-          <div>
-            <select class="eqrs-select" name="authorizedBatchSubOrg" id="authorizedBatchSubOrg" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor='let authBatch of searchData.authorizedBatchSubOrg' [value]="authBatch">{{authBatch}}</option>
-            </select>
-          </div>
-        </div>
-
+      <!-- location -->
+      <div class="row mb-2 mt-3">
+        <div class="col"><b>Location</b></div>
       </div>
 
       <div class="row">
 
-        <div class="col-sm">
-          <div><label for="typeOfServices">Type of services</label></div>
+        <div class="col-sm-3">
+          <div><label for="zipCode">Zip code</label></div>
           <div>
-            <select class="eqrs-select" name="typeOfServices" id="typeOfServices" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor="let typeOfservice of searchData.typeOfServices" [value]=typeOfservice>{{typeOfservice}}</option>
-            </select>
+            <md-input-container>
+              <span class="fa fa-search fa-lg mb-3"></span>
+              <input type="text" name="zipCode" id="zipCode" class="eqrs-input search-input-padding" mdInput
+                     [mdAutocomplete]="searchZipCode" (keydown.enter)="$event.preventDefault()"
+                     aria-label="Use this auto-suggest to lookup a city"/>
+            </md-input-container>
+
+            <md-autocomplete #searchZipCode="mdAutocomplete">
+              <md-option *ngFor="let zipCode of searchData.zipCodes" [value]="zipCode" (onSelectionChange)="locationArray.push(zipCode)">
+                <div class="p-1 w-100">{{ zipCode }}</div>
+              </md-option>
+            </md-autocomplete>
+
           </div>
         </div>
 
-        <div class="col-sm">
-          <div><label for="additionalServices">Additional services</label></div>
+        <div class="col-sm-5">
+          <div><label for="city">City</label></div>
           <div>
-            <select class="eqrs-select" name="additionalServices" id="additionalServices" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor='let additionalService of searchData.additionalServices' [value]="additionalService">{{additionalService}}</option>
-            </select>
+            <md-input-container>
+              <span class="fa fa-search fa-lg mb-3"></span>
+              <input type="text" name="city" id="city" class="eqrs-input search-input-padding" mdInput
+                     [mdAutocomplete]="searchCity" (keydown.enter)="$event.preventDefault()"
+                     aria-label="Use this auto-suggest to lookup a city"/>
+            </md-input-container>
+            <md-autocomplete #searchCity="mdAutocomplete">
+              <md-option *ngFor="let city of searchData.cities" [value]="city" (onSelectionChange)="locationArray.push(city)">
+                <div class="p-1 w-100">{{city}}</div>
+              </md-option>
+            </md-autocomplete>
           </div>
         </div>
 
-        <div class="col-sm">
-          <div><label for="programTypes">Program type </label></div>
+        <div class="col-sm-3">
+          <div><label for="states">State</label></div>
           <div>
-            <select class="eqrs-select" name="programType" id="programTypes" (change)="getSelectedSpecificsValue($event.target)">
+            <select class="eqrs-select" name="state" id="states" (change)="getSelectedLocationValue($event.target)">
               <option value="" selected disabled></option>
-              <option *ngFor='let programType of searchData.programTypes' [value]="programType">{{programType}}</option>
+              <option *ngFor='let state of searchData.states' [value]="state">{{state}}</option>
             </select>
           </div>
+        </div>
+        <div class="col-sm-5">
+          <div><label for="networks">Network</label></div>
+          <div>
+            <select class="eqrs-select" name="network" id="networks" (change)="getSelectedLocationValue($event.target)">
+              <option value="" selected disabled></option>
+              <option *ngFor='let network of searchData.networks' [value]="network">{{network}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+
+      <!-- specifics -->
+
+      <div class="mb-3">
+
+        <div class="row mb-2">
+          <div class="col"><b>Specifics</b></div>
+        </div>
+
+        <div class="row mb-1">
+
+          <div class="col-sm-6 resp-margin">
+            <div><label for="providerUseTypes">Provider use type</label></div>
+            <div>
+              <select class="eqrs-select" name="providerUseType" id="providerUseTypes" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor="let providerUseType of searchData.providerUseTypes" [value]=providerUseType>{{providerUseType}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6 resp-margin">
+            <div><label for="medicareStatus">Medicare status</label></div>
+            <div>
+              <select class="eqrs-select" name="medicareStatus" id="medicareStatus" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor='let medicareStatus of searchData.medicareStatus' [value]="medicareStatus">{{medicareStatus}}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm-6 w-auth-batch">
+            <div><label class="col-sm pl-0 pr-0" for="authorizedBatchSubOrg">Authorized batch submitting organization </label></div>
+            <div>
+              <select class="eqrs-select" name="authorizedBatchSubOrg" id="authorizedBatchSubOrg" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor='let authBatch of searchData.authorizedBatchSubOrg' [value]="authBatch">{{authBatch}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div><label for="typeOfServices">Type of services</label></div>
+            <div>
+              <select class="eqrs-select" name="typeOfServices" id="typeOfServices" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor="let typeOfservice of searchData.typeOfServices" [value]=typeOfservice>{{typeOfservice}}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm-6">
+            <div><label for="additionalServices">Additional services</label></div>
+            <div>
+              <select class="eqrs-select" name="additionalServices" id="additionalServices" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor='let additionalService of searchData.additionalServices' [value]="additionalService">{{additionalService}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div><label for="programTypes">Program type </label></div>
+            <div>
+              <select class="eqrs-select" name="programType" id="programTypes" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor='let programType of searchData.programTypes' [value]="programType">{{programType}}</option>
+              </select>
+            </div>
+          </div>
+
+          </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div><label for="managingOrganization">Managing organization</label></div>
+            <div>
+              <select class="eqrs-select" name="managingOrganization" id="managingOrganization" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <!--<option *ngFor="let managingOrganization of managingOrganizations" [value]=managingOrganization.description>{{managingOrganization.description}}</option>-->
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div><label for="primaryOwner">Primary owner</label></div>
+            <div>
+              <select class="eqrs-select" name="primaryOwner" id="primaryOwner" (change)="getSelectedSpecificsValue($event.target)">
+                <option value="" selected disabled></option>
+                <option *ngFor='let primaryOwner of searchData.primaryOwner' [value]="primaryOwner">{{primaryOwner}}</option>
+              </select>
+            </div>
+          </div>
+
         </div>
 
       </div>
+      <hr/>
+
+      <!-- filters -->
+
+      <div class="row mb-3">
+        <div class="col-sm-12"><b>Filters</b></div>
+        <div class="col-sm-12 d-flex">
+          <div class="col-sm-2 pr-0 pl-0 mt-1">Show:</div>
+          <div class="col-sm-12 pl-0 d-flex flex-wrap">
+                    <span class="mr-3">
+                      <input id="closed" type="checkbox" name="closed" value="closed">
+                      <label for="closed">Closed</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="opened" type="checkbox" name="opened" value="opened">
+                      <label for="opened">Opened</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="saved" type="checkbox" name="saved" value="saved">
+                      <label for="saved">Saved</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="missing-backup-facility" type="checkbox" name="missing-backup-facility">
+                      <label for="missing-backup-facility">Missing backup facility</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="missing-hours-and-shifts" type="checkbox" name="missing-hours-and-shifts">
+                      <label for="missing-hours-and-shifts">Missing hours and shifts</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="offers-certified-services" type="checkbox" name="offers-certified-services">
+                      <label for="offers-certified-services">Offers certified services</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="missing-additional-services" type="checkbox" name="missing-additional-services">
+                      <label for="missing-additional-services">Missing additional services</label>
+                    </span>
+            <span class="mr-3">
+                      <input id="temporary-closed" type="checkbox" name="temporary-closed">
+                      <label for="temporary-closed">Temporary closed</label>
+                    </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 pr-0 border-left-criteria mt-3">
+
+      <!-- criteria -->
 
       <div class="row">
-
-        <div class="col-sm-4">
-          <div><label for="managingOrganization">Managing organization</label></div>
-          <div>
-            <select class="eqrs-select" name="managingOrganization" id="managingOrganization" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <!--<option *ngFor="let managingOrganization of managingOrganizations" [value]=managingOrganization.description>{{managingOrganization.description}}</option>-->
-            </select>
-          </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div><label for="primaryOwner">Primary owner</label></div>
-          <div>
-            <select class="eqrs-select" name="primaryOwner" id="primaryOwner" (change)="getSelectedSpecificsValue($event.target)">
-              <option value="" selected disabled></option>
-              <option *ngFor='let primaryOwner of searchData.primaryOwner' [value]="primaryOwner">{{primaryOwner}}</option>
-            </select>
-          </div>
-        </div>
-
+        <div class="col-sm-6 m-bottom"><b>Criteria</b></div>
+        <div class="col-sm-6 text-right cursor-pointer clear-all-color" (click)="clearAll()">Clear all</div>
       </div>
-    </div>
-    <hr/>
 
-    <!-- filters -->
-
-    <div class="row mb-3">
-      <div class="col-sm-12"><b>Filters</b></div>
-      <div class="col-sm-12 d-flex">
-        <div class="col-sm-1 pr-0 pl-0 mt-1">Show:</div>
-        <div class="col-sm-9 pl-0 d-flex flex-wrap">
-                  <span class="mr-3">
-                    <input id="closed" type="checkbox" name="closed" value="closed">
-                    <label for="closed">Closed</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="opened" type="checkbox" name="opened" value="opened">
-                    <label for="opened">Opened</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="saved" type="checkbox" name="saved" value="saved">
-                    <label for="saved">Saved</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="missing-backup-facility" type="checkbox" name="missing-backup-facility">
-                    <label for="missing-backup-facility">Missing backup facility</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="missing-hours-and-shifts" type="checkbox" name="missing-hours-and-shifts">
-                    <label for="missing-hours-and-shifts">Missing hours and shifts</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="offers-certified-services" type="checkbox" name="offers-certified-services">
-                    <label for="offers-certified-services">Offers certified services</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="missing-additional-services" type="checkbox" name="missing-additional-services">
-                    <label for="missing-additional-services">Missing additional services</label>
-                  </span>
-          <span class="mr-3">
-                    <input id="temporary-closed" type="checkbox" name="temporary-closed">
-                    <label for="temporary-closed">Temporary closed</label>
-                  </span>
+      <div class="row pl-2 d-flex" *ngIf="locationArray.length != 0">
+        <b class="col-sm-12 pl-0">Location</b>
+        <div class="eqrs-staging-criteria d-flex flex-wrap ml-2 mt-2" *ngFor="let item of locationArray; let i = index;">
+          <div class="p-2 border-right"><span>{{item}}</span></div>
+          <div class="p-2" (click)="locationArray.splice(i,1)"><div class="fa fa-times fa-1x"></div></div>
         </div>
       </div>
-    </div>
 
-    <!-- criteria -->
-
-    <div class="row">
-      <div class="col-sm-10 m-bottom">CRITERIA</div>
-      <div class="col-sm-2 text-right cursor-pointer clear-all-color" (click)="clearAll()">Clear all</div>
-    </div>
-    <hr/>
-
-    <div class="row pl-3 d-flex" *ngIf="locationArray.length != 0">
-      <b class="col-sm-12 pl-0">Location</b>
-      <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of locationArray; let i = index;">
-        <div class="p-2 border-right"><span><b>{{item}}</b></span></div>
-        <div class="p-2" (click)="locationArray.splice(i,1)"><div class="fa fa-times"></div></div>
+      <div class="row pl-2 mt-2 d-flex" *ngIf="specificsArray.length != 0">
+        <b class="col-sm-12 pl-0">Specifics</b>
+        <div class="eqrs-staging-criteria d-flex flex-wrap ml-2 mt-2" *ngFor="let item of specificsArray; let i = index;">
+          <div class="p-2 border-right"><span>{{item}}</span></div>
+          <div class="p-2" (click)="specificsArray.splice(i,1)"><div class="fa fa-times fa-1x"></div></div>
+        </div>
       </div>
-    </div>
 
-    <div class="row pl-3 mt-3 d-flex" *ngIf="specificsArray.length != 0">
-      <b class="col-sm-12 pl-0">Specifics</b>
-      <div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of specificsArray; let i = index;">
-        <div class="p-2 border-right"><span><b>{{item}}</b></span></div>
-        <div class="p-2" (click)="specificsArray.splice(i,1)"><div class="fa fa-times"></div></div>
+      <div class="row" *ngIf="specificsArray.length == 0 && locationArray.length == 0">
+        <div class="col">No criteria selected</div>
       </div>
-    </div>
 
-    <div class="row" *ngIf="specificsArray.length == 0 && locationArray.length == 0">
-      <div class="col">No criteria selected</div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-sm-2">
-        <button class="eqrs-button-primary" [disabled]="specificsArray.length + locationArray.length == 0" [routerLink] = "['/facility-search-results']">Submit</button>
+      <div class="mt-3 col-md-7 pr-0 float-right">
+        <div class="col-sm-12 pr-0">
+          <button class="eqrs-button-primary" [disabled]="specificsArray.length + locationArray.length == 0" [routerLink] = "['/facility-search-results']">Submit</button>
+        </div>
       </div>
     </div>
   </form>
@@ -348,3 +358,31 @@
 
 
 <h1 *ngIf="showManyResultsModal()" class="p-4">Too many results, narrow your search!</h1>
+
+<!--<div class="mt-2 container">-->
+  <!--<div class="col-sm-3"><label for="programTypes">State </label></div>-->
+  <!--<div class="col-sm-3">-->
+  <!--<md-select multiple class="eqrs-select col-sm-12 p-0" id="style" [(ngModel)]="selectedOptions">-->
+    <!--<md-option *ngFor ="let section of selectedSectionList" [value]="section" class="pl-2">-->
+      <!--{{section}}-->
+    <!--</md-option>-->
+  <!--</md-select>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="row pl-3 d-flex" *ngIf="selectedOptions.length != 0">-->
+  <!--<b class="col-sm-12 pl-0">Location</b>-->
+  <!--<div class="eqrs-staging-criteria d-flex flex-wrap ml-3 mt-3" *ngFor="let item of selectedOptions; let i = index;">-->
+    <!--<div class="p-2 border-right"><span><b>{{item}}</b></span></div>-->
+    <!--<div class="p-2" (click)="updateChecked(i);"><div class="fa fa-times"></div></div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+<!--<div>{{selectedOperator | json}}</div>-->
+<!--<select class="form-control input-sm" #mySelect (change)="onSelectChange(mySelect.value)">-->
+  <!--<option *ngFor="let o of operators"-->
+          <!--[value]="o.OperatorID" [selected]="o.OperatorID === selectedOperator.OperatorID">{{ o.OperatorName }}</option>-->
+<!--</select>-->
+

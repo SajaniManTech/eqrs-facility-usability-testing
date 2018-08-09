@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpClientModule} from '@angular/common/http';
 import {SelectCriteriaService} from '../services/select-criteria.service';
 import {element} from 'protractor';
+import {MdOption} from '@angular/material';
 
 @Component({
   selector: 'app-facility-search',
@@ -9,7 +10,8 @@ import {element} from 'protractor';
   styleUrls: ['./facility-search.component.scss']
 })
 export class FacilitySearchComponent implements OnInit {
-sss: any;
+ // @ViewChild(MdOption) checkbox: MdOption;
+  sss: any;
   showAdvSearchPanel = false;
   specificsArray: string[] = [];
   locationArray: string[] = [];
@@ -18,6 +20,8 @@ sss: any;
   searchData: any;
   zipCodeResults: any;
   display: boolean = false;
+ // selectedSectionList = ['CA' , 'MD', 'VA', 'NY', 'CO'];
+  selectedOptions = [];
 
   constructor( private http: HttpClient,
                private selectCriteriaService: SelectCriteriaService) { }
@@ -36,11 +40,13 @@ sss: any;
     }
     this.removeAllItems();
   }
-// getSelectedLocation(e: any, city: any) {
-//     if (e.source.selected) {
-//       this.locationArray.push(city);
-//     }
-// }
+  updateChecked(i) {
+    let remove = this.selectedOptions.splice(i, 1);
+    this.selectedOptions = this.selectedOptions.filter( ( el ) => remove.indexOf( el ) < 0);
+      console.log(this.selectedOptions);
+      return this.selectedOptions;
+  }
+
   getSelectedLocationValue(e: any) {
     let locFlag = true;
     let value = e.options[e.selectedIndex].value;
