@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpClientModule} from '@angular/common/
 import {SelectCriteriaService} from '../services/select-criteria.service';
 import {element} from 'protractor';
 import {MdOption} from '@angular/material';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-facility-search',
@@ -11,6 +12,7 @@ import {MdOption} from '@angular/material';
 })
 export class FacilitySearchComponent implements OnInit {
  // @ViewChild(MdOption) checkbox: MdOption;
+  formGroup: FormGroup;
   sss: any;
   showAdvSearchPanel = false;
   specificsArray: string[] = [];
@@ -22,6 +24,7 @@ export class FacilitySearchComponent implements OnInit {
   display: boolean = false;
  // selectedSectionList = ['CA' , 'MD', 'VA', 'NY', 'CO'];
   selectedOptions = [];
+  isFiltersOpen: boolean = false;
 
   constructor( private http: HttpClient,
                private selectCriteriaService: SelectCriteriaService) { }

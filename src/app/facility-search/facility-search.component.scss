@@ -3,10 +3,8 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
-.eqrs-staging-criteria {
-  border: 1px lightgrey solid;
-  background-color: mintcream;
-  border-radius: 10px;
+.eqrs-remove-color {
+  color: #cd2026;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -158,4 +156,8 @@ md-select md-option {
 
 .border-left-criteria {
   border-left: solid 1px lightgrey;
+}
+
+.hover-criteria-color:hover {
+  background-color: #f1f1f1;
 }
